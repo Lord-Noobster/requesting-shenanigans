@@ -1,6 +1,13 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-HEADER = {"User-Agen": "learning_project (jonizan@pm.me)"}
+
+load_dotenv()
+email = os.getenv("My_email")
+
+
+HEADER = {"User-Agen": f"learning_project/0.001 ({email})"}
 
 
 def search_title(title, limit=3):

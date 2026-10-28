@@ -1,5 +1,17 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+email = os.getenv("My_email")
+
+
+if email:
+    print(f"got email: {email}")
+else:
+    print("could not find email in .env")
 
 
 def lookup(isbn):
@@ -8,7 +20,7 @@ def lookup(isbn):
         r = requests.get(
             "https://openlibrary.org/api/books",
             params={"bibkeys": f"ISBN:{isbn}", "format": "json", "jscmd": "data"},
-            headers={"User-Agent": "learning_project (jonizan@pm.me)"},
+            headers={"User-Agent": f"learning_project/0.01 ({email})"},
             timeout=10,
         )
 
