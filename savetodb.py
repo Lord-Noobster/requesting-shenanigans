@@ -1,8 +1,20 @@
 import sqlite3
+import os
+from dotenv import load_dotenv
 import time
 import requests
 
-HEADER = {"User-Agent": "learning_project (jonizan@pm.me)"}
+load_dotenv()
+
+email = os.getenv("My_email")
+
+if email:
+    print(f"successfully retrieved email for header: {email}")
+else:
+    print("could not find My_email variable in the .env file")
+
+
+HEADER = {"User-Agent": f"learning_project/0.1 ({email})"}
 MIN_INTERVAL = (
     1.5  # seconds between API calls openlibrary allows 3/sec with a header with email
 )
